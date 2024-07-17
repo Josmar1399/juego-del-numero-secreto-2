@@ -18,10 +18,15 @@ function verificarIntento(){
             asignarTextoElemento ('p', "el número secreto es mayor");
         }
     }
-    intentos++; 
+    intentos++;
+    limpiarCampo(); 
 return; 
 }
 
+function limpiarCampo (){
+    document.querySelector('#valorDeUsuario').value = '';
+    return;
+}
 
 function generarNumeroSecreto (){
     return Math.floor(Math.random()*10)+ 1; 

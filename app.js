@@ -1,5 +1,5 @@
-let NumeroSecreto = generarNumeroSecreto();
-let intentos = 1; 
+let NumeroSecreto = 0;
+let intentos = 0; 
 
 function asignarTextoElemento (Elemento,Texto){
     let elementoHTML = document.querySelector(Elemento); 
@@ -33,5 +33,20 @@ function limpiarCampo (){
 function generarNumeroSecreto (){
     return Math.floor(Math.random()*10)+ 1; 
 }
-asignarTextoElemento ('h1', "Bienvenido al juego del número secreto");
-asignarTextoElemento ('p', "Dame un número del 1 al 100:");
+
+function condicionesIniciales (){
+    asignarTextoElemento ('h1', "Bienvenido al juego del número secreto");
+    asignarTextoElemento ('p', "Dame un número del 1 al 10:");
+    intentos = 1; 
+    NumeroSecreto = generarNumeroSecreto(); 
+}
+
+function reiniciarJuego(){
+    //limpiar campo 
+    limpiarCampo();
+    //Regresar a condiciones iniciales
+    condicionesIniciales();
+    //Deshabilitar el boton de nuevo juego
+    document.querySelector('#reiniciar').setAttribute('disabled','true');
+}
+condicionesIniciales();

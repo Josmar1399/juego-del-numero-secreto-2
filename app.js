@@ -1,14 +1,27 @@
 let NumeroSecreto = generarNumeroSecreto();
-console.log(NumeroSecreto);
+let intentos = 1; 
 
 function asignarTextoElemento (Elemento,Texto){
     let elementoHTML = document.querySelector(Elemento); 
     elementoHTML.innerHTML = Texto;
 }
 
-function IntentoDeUsuario(){
-    alert('intento desde el botón');
+function verificarIntento(){
+    let numeroDeUsuario = parseInt(document.getElementById('valorDeUsuario').value);
+     
+    if (numeroDeUsuario === NumeroSecreto){
+        asignarTextoElemento ('p', `Acertaste el número secreto en ${(intentos)} ${(intentos==1) ? 'intento' : 'intentos'}`);
+    } else { 
+        if (numeroDeUsuario > NumeroSecreto){
+            asignarTextoElemento ('p', "el número secreto es menor");
+        } else {
+            asignarTextoElemento ('p', "el número secreto es mayor");
+        }
+    }
+    intentos++; 
+return; 
 }
+
 
 function generarNumeroSecreto (){
     return Math.floor(Math.random()*10)+ 1; 

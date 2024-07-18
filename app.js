@@ -1,5 +1,6 @@
 let NumeroSecreto = 0;
 let intentos = 0; 
+let listaNumerosSorteados = [];
 
 function asignarTextoElemento (Elemento,Texto){
     let elementoHTML = document.querySelector(Elemento); 
@@ -31,7 +32,16 @@ function limpiarCampo (){
 }
 
 function generarNumeroSecreto (){
-    return Math.floor(Math.random()*10)+ 1; 
+    let NumeroSecreto = Math.floor(Math.random()*10)+ 1; 
+    console.log(NumeroSecreto);
+    console.log(listaNumerosSorteados);
+
+    if (listaNumerosSorteados.includes(NumeroSecreto)){
+     return generarNumeroSecreto(); 
+    } else {
+        listaNumerosSorteados.push(NumeroSecreto); 
+        return NumeroSecreto;
+    }
 }
 
 function condicionesIniciales (){
